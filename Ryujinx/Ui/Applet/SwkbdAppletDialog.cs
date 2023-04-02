@@ -34,7 +34,7 @@ namespace Ryujinx.Ui.Applet
             InputEntry.Changed   += OnInputChanged;
 
             OkButton     = (Button)AddButton("OK",     ResponseType.Ok);
-            CancelButton = (Button)AddButton("Cancel", ResponseType.Cancel);
+            CancelButton = (Button)AddButton("返回", ResponseType.Cancel);
 
             ((Box)MessageArea).PackEnd(_validationInfo, true, true, 0);
             ((Box)MessageArea).PackEnd(InputEntry,      true, true, 4);
@@ -58,14 +58,14 @@ namespace Ryujinx.Ui.Applet
             else if (_inputMin > 0 && _inputMax == int.MaxValue)
             {
                 _validationInfo.Visible = true;
-                _validationInfo.Markup  = $"<i>Must be at least {_inputMin} characters long</i>";
+                _validationInfo.Markup  = $"<i>必须至少 {_inputMin} 字符长</i>";
 
                 _checkLength = (length) => _inputMin <= length;
             }
             else
             {
                 _validationInfo.Visible = true;
-                _validationInfo.Markup  = $"<i>Must be {_inputMin}-{_inputMax} characters long</i>";
+                _validationInfo.Markup  = $"<i>必须是 {_inputMin}-{_inputMax} 字符长</i>";
 
                 _checkLength = (length) => _inputMin <= length && length <= _inputMax;
             }

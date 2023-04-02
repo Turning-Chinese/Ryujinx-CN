@@ -61,7 +61,7 @@ namespace Ryujinx.Ui.Widgets
 
             if (!ulong.TryParse(_titleIdText, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out _titleId))
             {
-                GtkDialog.CreateErrorDialog("The selected game did not have a valid Title Id");
+                GtkDialog.CreateErrorDialog("所选游戏没有有效的Title Id");
 
                 return;
             }
@@ -90,7 +90,7 @@ namespace Ryujinx.Ui.Widgets
             {
                 ref ApplicationControlProperty control = ref controlHolder.Value;
 
-                Logger.Info?.Print(LogClass.Application, $"Creating save directory for Title: {titleName} [{titleId:x16}]");
+                Logger.Info?.Print(LogClass.Application, $"正在为: {titleName} [{titleId:x16}] 创建保存目录");
 
                 if (Utilities.IsZeros(controlHolder.ByteSpan))
                 {
@@ -102,7 +102,7 @@ namespace Ryujinx.Ui.Widgets
                     control.UserAccountSaveDataSize        = 0x4000;
                     control.UserAccountSaveDataJournalSize = 0x4000;
 
-                    Logger.Warning?.Print(LogClass.Application, "No control file was found for this game. Using a dummy one instead. This may cause inaccuracies in some games.");
+                    Logger.Warning?.Print(LogClass.Application, "找不到此游戏的控制文件。用一个假的代替。这可能会导致某些游戏不准确.");
                 }
 
                 Uid user = new Uid((ulong)_accountManager.LastOpenedUser.UserId.High, (ulong)_accountManager.LastOpenedUser.UserId.Low);
@@ -111,7 +111,7 @@ namespace Ryujinx.Ui.Widgets
 
                 if (result.IsFailure())
                 {
-                    GtkDialog.CreateErrorDialog($"There was an error creating the specified savedata: {result.ToStringWithName()}");
+                    GtkDialog.CreateErrorDialog($"创建指定的存储数据时出错: {result.ToStringWithName()}");
 
                     return false;
                 }
@@ -127,7 +127,7 @@ namespace Ryujinx.Ui.Widgets
                 return true;
             }
 
-            GtkDialog.CreateErrorDialog($"There was an error finding the specified savedata: {result.ToStringWithName()}");
+            GtkDialog.CreateErrorDialog($"查找指定的存储数据时出错: {result.ToStringWithName()}");
 
             return false;
         }

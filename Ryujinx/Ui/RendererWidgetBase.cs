@@ -374,7 +374,7 @@ namespace Ryujinx.Ui
                         }
                         catch (Exception ex)
                         {
-                            Logger.Error?.Print(LogClass.Application, $"Failed to create directory at path {directory}. Error : {ex.GetType().Name}", "Screenshot");
+                            Logger.Error?.Print(LogClass.Application, $"无法在路径处创建目录 {directory}. Error : {ex.GetType().Name}", "Screenshot");
 
                             return;
                         }
@@ -399,13 +399,13 @@ namespace Ryujinx.Ui
 
                         image.Dispose();
 
-                        Logger.Notice.Print(LogClass.Application, $"Screenshot saved to {path}", "Screenshot");
+                        Logger.Notice.Print(LogClass.Application, $"屏幕截图保存到 {path}", "截图");
                     }
                 });
             }
             else
             {
-                Logger.Error?.Print(LogClass.Application, $"Screenshot is empty. Size : {e.Data.Length} bytes. Resolution : {e.Width}x{e.Height}", "Screenshot");
+                Logger.Error?.Print(LogClass.Application, $"屏幕截图为空。大小: {e.Data.Length} 字节. 质量: {e.Width}x{e.Height}", "截图");
             }
         }
 
@@ -460,7 +460,7 @@ namespace Ryujinx.Ui
 
                     if (_ticks >= _ticksPerFrame)
                     {
-                        string dockedMode = ConfigurationState.Instance.System.EnableDockedMode ? "Docked" : "Handheld";
+                        string dockedMode = ConfigurationState.Instance.System.EnableDockedMode ? "Docked" : "掌机";
                         float scale = GraphicsConfig.ResScale;
                         if (scale != 1)
                         {

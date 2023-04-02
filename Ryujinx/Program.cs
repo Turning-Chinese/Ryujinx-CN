@@ -78,7 +78,7 @@ namespace Ryujinx
 
             if (OperatingSystem.IsWindows() && !OperatingSystem.IsWindowsVersionAtLeast(10, 0, 17134))
             {
-                MessageBoxA(IntPtr.Zero, "You are running an outdated version of Windows.\n\nStarting on June 1st 2022, Ryujinx will only support Windows 10 1803 and newer.\n", $"Ryujinx {Version}", MB_ICONWARNING);
+                MessageBoxA(IntPtr.Zero, "你正在运行一个过时的Windows 版本。\n\n从20226月1日起，Ryujinx将只支持Windows 10 1809及更新版本。\n", $"Ryujinx {Version}", MB_ICONWARNING);
             }
 
             // Parse arguments
@@ -203,7 +203,7 @@ namespace Ryujinx
 
                     showVulkanPrompt = true;
 
-                    Logger.Warning?.PrintMsg(LogClass.Application, $"Failed to load config! Loading the default config instead.\nFailed config location {ConfigurationPath}");
+                    Logger.Warning?.PrintMsg(LogClass.Application, $"无法加载配置！加载默认配置。\n无法加载位于 {ConfigurationPath} 的配置");
                 }
             }
 
@@ -259,7 +259,7 @@ namespace Ryujinx
             {
                 Updater.BeginParse(mainWindow, false).ContinueWith(task =>
                 {
-                    Logger.Error?.Print(LogClass.Application, $"Updater Error: {task.Exception}");
+                    Logger.Error?.Print(LogClass.Application, $"更新器错误: {task.Exception}");
                 }, TaskContinuationOptions.OnlyOnFaulted);
             }
 
@@ -267,21 +267,21 @@ namespace Ryujinx
             {
                 var buttonTexts = new Dictionary<int, string>()
                 {
-                    { 0, "Yes (Vulkan)" },
-                    { 1, "No (OpenGL)" }
+                    { 0, "是的 (Vulkan)" },
+                    { 1, "不用 (OpenGL)" }
                 };
 
                 ResponseType response = GtkDialog.CreateCustomDialog(
-                    "Ryujinx - Default graphics backend",
-                    "Use Vulkan as default graphics backend?",
-                    "Ryujinx now supports the Vulkan API. " +
-                    "Vulkan greatly improves shader compilation performance, " +
-                    "and fixes some graphical glitches; however, since it is a new feature, " +
-                    "you may experience some issues that did not occur with OpenGL.\n\n" +
-                    "Note that you will also lose any existing shader cache the first time you start a game " +
-                    "on version 1.1.200 onwards, because Vulkan required changes to the shader cache that makes it incompatible with previous versions.\n\n" +
-                    "Would you like to set Vulkan as the default graphics backend? " +
-                    "You can change this at any time on the settings window.",
+                    "Ryujinx - 默认图像后端",
+                    "使用Vulkan作为默认的图形后端?",
+                    "Ryujinx现已支持VULKAN API。 " +
+                    "Vulkan极大地提升了着色器编译性能, " +
+                    "解决了一些图形渲染卡顿;但是, 这还是个新的功能, " +
+                    "你可能会遇到OpenGL没有的渲染错误。\n\n" +
+                    "注意：在1.1.200及以上版本，当你第一次启动游戏时你也将会丢失任何已存在的着色器缓存， " +
+                    "因为Vulkan需要更改着色器缓存，使其与以前的版本不兼容.\n\n" +
+                    "是否要将Vulkan设置为默认的图形后端？ " +
+                    "您可以随时在设置窗口中更改此设置。",
                     buttonTexts,
                     MessageType.Question);
 
@@ -297,7 +297,7 @@ namespace Ryujinx
 
         private static void PrintSystemInfo()
         {
-            Logger.Notice.Print(LogClass.Application, $"Ryujinx Version: {Version}");
+            Logger.Notice.Print(LogClass.Application, $"Ryujinx版本: {Version}");
             SystemInfo.Gather().Print();
 
             var enabledLogs = Logger.GetEnabledLevels();
@@ -305,17 +305,17 @@ namespace Ryujinx
 
             if (AppDataManager.Mode == AppDataManager.LaunchMode.Custom)
             {
-                Logger.Notice.Print(LogClass.Application, $"Launch Mode: Custom Path {AppDataManager.BaseDirPath}");
+                Logger.Notice.Print(LogClass.Application, $"启动模式: 自定义路径 {AppDataManager.BaseDirPath}");
             }
             else
             {
-                Logger.Notice.Print(LogClass.Application, $"Launch Mode: {AppDataManager.Mode}");
+                Logger.Notice.Print(LogClass.Application, $"启动模式: {AppDataManager.Mode}");
             }
         }
 
         private static void ProcessUnhandledException(Exception ex, bool isTerminating)
         {
-            string message = $"Unhandled exception caught: {ex}";
+            string message = $"未处理的异常捕获: {ex}";
 
             Logger.Error?.PrintMsg(LogClass.Application, message);
 
