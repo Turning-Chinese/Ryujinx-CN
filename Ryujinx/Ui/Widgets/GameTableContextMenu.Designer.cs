@@ -146,7 +146,7 @@ namespace Ryujinx.Ui.Widgets
             //
             // _manageCacheMenuItem
             //
-            _manageCacheMenuItem = new MenuItem("Cache Management")
+            _manageCacheMenuItem = new MenuItem("缓存管理")
             {
                 Submenu = _manageSubMenu
             };
@@ -154,36 +154,36 @@ namespace Ryujinx.Ui.Widgets
             //
             // _purgePtcCacheMenuItem
             //
-            _purgePtcCacheMenuItem = new MenuItem("Queue PPTC Rebuild")
+            _purgePtcCacheMenuItem = new MenuItem("PPTC重建")
             {
-                TooltipText = "Trigger PPTC to rebuild at boot time on the next game launch."
+                TooltipText = "触发PPTC在下次游戏启动时重建h."
             };
             _purgePtcCacheMenuItem.Activated += PurgePtcCache_Clicked;
 
             //
             // _purgeShaderCacheMenuItem
             //
-            _purgeShaderCacheMenuItem = new MenuItem("Purge Shader Cache")
+            _purgeShaderCacheMenuItem = new MenuItem("清除着色器缓存")
             {
-                TooltipText = "Delete the Application's shader cache."
+                TooltipText = "删除应用程序的着色器缓存."
             };
             _purgeShaderCacheMenuItem.Activated += PurgeShaderCache_Clicked;
 
             //
             // _openPtcDirMenuItem
             //
-            _openPtcDirMenuItem = new MenuItem("Open PPTC Directory")
+            _openPtcDirMenuItem = new MenuItem("打开PPTC目录")
             {
-                TooltipText = "Open the directory which contains the Application's PPTC cache."
+                TooltipText = "打开包含应用程序PPTC缓存的目录."
             };
             _openPtcDirMenuItem.Activated += OpenPtcDir_Clicked;
 
             //
             // _openShaderCacheDirMenuItem
             //
-            _openShaderCacheDirMenuItem = new MenuItem("Open Shader Cache Directory")
+            _openShaderCacheDirMenuItem = new MenuItem("打开着色器缓存目录")
             {
-                TooltipText = "Open the directory which contains the Application's shader cache."
+                TooltipText = "打开包含应用程序的着色器缓存的目录."
             };
             _openShaderCacheDirMenuItem.Activated += OpenShaderCacheDir_Clicked;
 

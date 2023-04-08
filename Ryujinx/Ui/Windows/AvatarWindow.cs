@@ -35,7 +35,7 @@ namespace Ryujinx.Ui.Windows
         private Button    _setBackgroungColorButton;
         private Gdk.RGBA  _backgroundColor;
 
-        public AvatarWindow() : base($"Ryujinx {Program.Version} - Manage Accounts - Avatar")
+        public AvatarWindow() : base($"Ryujinx {Program.Version} - 管理帐户-头像")
         {
             Icon = new Gdk.Pixbuf(Assembly.GetAssembly(typeof(ConfigurationState)), "Ryujinx.Ui.Common.Resources.Logo_Ryujinx.png");
 
@@ -60,7 +60,7 @@ namespace Ryujinx.Ui.Windows
 
             Button chooseButton = new Button()
             {
-                Label           = "Choose",
+                Label           = "选择",
                 CanFocus        = true,
                 ReceivesDefault = true
             };
@@ -68,7 +68,7 @@ namespace Ryujinx.Ui.Windows
 
             _setBackgroungColorButton = new Button()
             {
-                Label    = "Set Background Color",
+                Label    = "设置背景颜色",
                 CanFocus = true
             };
             _setBackgroungColorButton.Clicked += SetBackgroungColorButton_Pressed;
@@ -80,7 +80,7 @@ namespace Ryujinx.Ui.Windows
 
             Button closeButton = new Button()
             {
-                Label           = "Close",
+                Label           = "关闭",
                 CanFocus        = true
             };
             closeButton.Clicked += CloseButton_Pressed;
@@ -203,7 +203,7 @@ namespace Ryujinx.Ui.Windows
 
         private void SetBackgroungColorButton_Pressed(object sender, EventArgs e)
         {
-            using (ColorChooserDialog colorChooserDialog = new ColorChooserDialog("Set Background Color", this))
+            using (ColorChooserDialog colorChooserDialog = new ColorChooserDialog("设置背景颜色", this))
             {
                 colorChooserDialog.UseAlpha = false;
                 colorChooserDialog.Rgba     = _backgroundColor;
