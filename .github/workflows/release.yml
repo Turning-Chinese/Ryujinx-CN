@@ -2,13 +2,6 @@ name: Release job
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ master ]
-    paths-ignore:
-      - '.github/*'
-      - '.github/ISSUE_TEMPLATE/**'
-      - '*.yml'
-      - 'README.md'
 
 concurrency: release
 

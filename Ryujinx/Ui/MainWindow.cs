@@ -439,7 +439,7 @@ namespace Ryujinx.Ui
                 }
                 else
                 {
-                    Logger.Warning?.Print(LogClass.Audio, "SDL2不受支持，正在尝试回退到Open AL。”）；
+                    Logger.Warning?.Print(LogClass.Audio, "SDL2不受支持，正在尝试回退到Open AL。");
                     if (OpenALHardwareDeviceDriver.IsSupported)
                     {
                         Logger.Warning?.Print(LogClass.Audio, "发现OpenAL，正在更改配置。");
